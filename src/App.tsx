@@ -1,110 +1,86 @@
 import './App.css'
-import { FaWhatsapp, FaInstagram, FaTiktok, FaFacebook } from 'react-icons/fa'
-import { MdEmail, MdShoppingBag, MdStorefront } from 'react-icons/md'
+import { links, iconComponents, type IconName } from './config/links'
+import { theme } from './config/theme'
 
 interface LinkButtonProps {
-  href: string
-  icon: React.ReactNode
-  children: React.ReactNode
+  href: string;
+  icon: IconName;
+  children: React.ReactNode;
 }
 
-const LinkButton = ({ href, icon, children }: LinkButtonProps) => (
-  <a 
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="btn-primary w-full text-center block flex items-center justify-center gap-2"
-  >
-    {icon}
-    <span>{children}</span>
-  </a>
-)
+const LinkButton = ({ href, icon, children }: LinkButtonProps) => {
+  const IconComponent = iconComponents[icon];
+  return (
+    <a 
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="btn-primary w-full text-center block flex items-center justify-center gap-2"
+    >
+      <IconComponent className="text-xl" />
+      <span>{children}</span>
+    </a>
+  );
+}
 
 function App() {
   return (
-    <div className="container-custom">
-      <div className="flex flex-col items-center space-y-6">
-        {/* Logo */}
-        <img 
-          src="/isologo.png" 
-          alt="Santa La Masa logo" 
-          className="w-24 h-24 object-contain"
-        />
-        
-        {/* Título */}
-        <h1 className="text-4xl text-budin font-cormorant font-medium tracking-wide">
-          Santa La Masa
-        </h1>
-        
-        {/* Subtítulo */}
-        <p className="text-center text-gris">
-          Budines y focaccias artesanales hechos con amor
-        </p>
+    <div 
+      className="min-h-screen py-8 px-4"
+      style={{
+        backgroundImage: `${theme.background.overlay}, ${theme.background.texture}`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      <div className="container-custom">
+        <div className="flex flex-col items-center space-y-6">
+          {/* Logo */}
+          <img 
+            src="/isologo.png" 
+            alt="Santa La Masa logo" 
+            className="w-24 h-24 object-contain"
+          />
+          
+          {/* Título */}
+          <h1 className="text-4xl text-budin font-cormorant font-medium tracking-wide">
+            Santa La Masa
+          </h1>
+          
+          {/* Subtítulo */}
+          <p className="text-center text-gris">
+            Budines y focaccias artesanales hechos con amor
+          </p>
 
-        {/* Botones de enlaces */}
-        <div className="w-full space-y-4">
-          {/* Catálogos */}
-          <div className="space-y-3">
-            <h2 className="text-xl text-budin font-cormorant text-center">Nuestros Productos</h2>
-            <LinkButton 
-              href="/catalogo-minorista"
-              icon={<MdShoppingBag className="text-xl" />}
-            >
-              Catálogo Minorista
-            </LinkButton>
-            <LinkButton 
-              href="/catalogo-mayorista"
-              icon={<MdStorefront className="text-xl" />}
-            >
-              Catálogo Mayorista
-            </LinkButton>
+          {/* Secciones de enlaces */}
+          <div className="w-full space-y-8">
+            {links.map((section) => (
+              <div key={section.title} className="space-y-3">
+                <h2 className="text-xl text-budin font-cormorant text-center">
+                  {section.title}
+                </h2>
+                <div className="space-y-3">
+                  {section.links.map((link) => (
+                    <LinkButton
+                      key={link.title}
+                      href={link.url}
+                      icon={link.icon}
+                    >
+                      {link.title}
+                    </LinkButton>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* Redes Sociales */}
-          <div className="space-y-3">
-            <h2 className="text-xl text-budin font-cormorant text-center">Síguenos en Redes</h2>
-            <LinkButton 
-              href="https://instagram.com/santalamasa"
-              icon={<FaInstagram className="text-xl" />}
-            >
-              Instagram
-            </LinkButton>
-            <LinkButton 
-              href="https://tiktok.com/@santalamasa"
-              icon={<FaTiktok className="text-xl" />}
-            >
-              TikTok
-            </LinkButton>
-            <LinkButton 
-              href="https://facebook.com/santalamasa"
-              icon={<FaFacebook className="text-xl" />}
-            >
-              Facebook
-            </LinkButton>
-          </div>
-
-          {/* Contacto */}
-          <div className="space-y-3">
-            <h2 className="text-xl text-budin font-cormorant text-center">Contacto</h2>
-            <LinkButton 
-              href="https://wa.me/1234567890"
-              icon={<FaWhatsapp className="text-xl" />}
-            >
-              Pedidos por WhatsApp
-            </LinkButton>
-            <LinkButton 
-              href="mailto:contacto@santalamasa.com"
-              icon={<MdEmail className="text-xl" />}
-            >
-              Contacto por Email
-            </LinkButton>
-          </div>
+          {/* Footer */}
+          <p className="mt-10 text-xs text-budin italic">
+            Hecho con masa, tiempo y amor 💛
+          </p>
         </div>
-
-        {/* Footer */}
-        <p className="mt-10 text-xs text-budin italic">
-          Hecho con masa, tiempo y amor 💛
-        </p>
       </div>
     </div>
   )
