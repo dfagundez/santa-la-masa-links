@@ -73,12 +73,12 @@ export const links: LinkSection[] = [
     links: [
       {
         title: 'Pedidos por WhatsApp',
-        url: 'https://wa.me/1234567890',
+        url: 'https://wa.me/5491127785821?text=Hola%20Santa%20La%20Masa!%20Quiero%20hacer%20un%20pedido%20🥖',
         icon: 'whatsapp',
       },
       {
         title: 'Contacto por Email',
-        url: 'mailto:contacto@santalamasa.com',
+        url: 'mailto:santalamasa@gmail.com',
         icon: 'email',
       },
     ],
