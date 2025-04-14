@@ -1,6 +1,9 @@
 import './App.css'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { links, iconComponents, type IconName } from './config/links'
 import { theme } from './config/theme'
+import RetailCatalog from './pages/RetailCatalog'
+import WholesaleCatalog from './pages/WholesaleCatalog'
 
 interface LinkButtonProps {
   href: string;
@@ -10,6 +13,22 @@ interface LinkButtonProps {
 
 const LinkButton = ({ href, icon, children }: LinkButtonProps) => {
   const IconComponent = iconComponents[icon];
+  
+  // Determinar si es una ruta interna o externa
+  const isInternalLink = href.startsWith('/');
+  
+  if (isInternalLink) {
+    return (
+      <Link 
+        to={href}
+        className="btn-primary w-full text-center block flex items-center justify-center gap-2"
+      >
+        <IconComponent className="text-xl" />
+        <span>{children}</span>
+      </Link>
+    );
+  }
+  
   return (
     <a 
       href={href}
@@ -23,7 +42,7 @@ const LinkButton = ({ href, icon, children }: LinkButtonProps) => {
   );
 }
 
-function App() {
+const HomePage = () => {
   return (
     <div 
       className="min-h-screen py-8 px-4"
@@ -83,6 +102,18 @@ function App() {
         </div>
       </div>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/catalogo-minorista" element={<RetailCatalog />} />
+        <Route path="/catalogo-mayorista" element={<WholesaleCatalog />} />
+      </Routes>
+    </Router>
   )
 }
 

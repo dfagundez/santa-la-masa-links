@@ -5,7 +5,9 @@ export default {
     extend: {
       fontFamily: {
         cormorant: ['"Cormorant SC"', 'serif'],
+        playfair: ['"Playfair Display"', 'serif'],
         poppins: ['Poppins', 'sans-serif'],
+        lato: ['Lato', 'sans-serif'],
       },
       colors: {
         'masa-clara': '#F6F0E7',
