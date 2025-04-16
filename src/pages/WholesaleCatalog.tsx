@@ -1,10 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdArrowBack } from 'react-icons/md';
+import { FaWhatsapp } from 'react-icons/fa';
 import { getWholesaleProducts } from '../config/products';
 
 const WholesaleCatalog: React.FC = () => {
   const products = getWholesaleProducts();
+
+  // Función para crear enlace de WhatsApp para solicitar cotización mayorista
+  const createWholesaleWhatsAppLink = (product: any) => {
+    const message = encodeURIComponent(
+      `Hola! Soy un cliente mayorista y me interesa recibir una cotización para ${product.name}. ¿Podrías darme más información sobre precios y disponibilidad? Gracias!`
+    );
+    return `https://wa.me/+5491154793903?text=${message}`;
+  };
+
+  // Función para determinar si el producto es un budín (requiere mínimo)
+  const isBudin = (productId: string) => {
+    return productId.includes('budin');
+  };
 
   return (
     <div 
@@ -71,22 +85,49 @@ const WholesaleCatalog: React.FC = () => {
                   </p>
                   <div className="flex flex-col space-y-2">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gris font-poppins">Precio por unidad:</span>
+                      <span className="text-sm text-gris font-poppins">Precio:</span>
                       <span className="text-lg font-bold text-budin">
                         ${product.wholesalePrice?.unit.toLocaleString('es-AR')}
                       </span>
                     </div>
+                    
+                    {/* Información de peso */}
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gris font-poppins">
-                        Precio por caja ({product.wholesalePrice?.boxQuantity} unidades):
-                      </span>
-                      <span className="text-lg font-bold text-budin">
-                        ${product.wholesalePrice?.box.toLocaleString('es-AR')}
+                      <span className="text-sm text-gris font-poppins">Peso:</span>
+                      <span className="text-md font-medium text-budin">
+                        {product.weight}
                       </span>
                     </div>
-                    <button className="w-full bg-romero text-white px-4 py-2 rounded-md hover:bg-budin transition-colors duration-300 mt-2 font-poppins">
-                      Solicitar Cotización
-                    </button>
+                    
+                    {/* Para budines, mostrar el pedido mínimo */}
+                    {isBudin(product.id) && (
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gris font-poppins">Pedido mínimo:</span>
+                        <span className="text-md font-medium text-budin">
+                          {product.wholesalePrice?.minQuantity} unidades
+                        </span>
+                      </div>
+                    )}
+                    
+                    {/* Para focaccias, mostrar que se vende por unidad entera */}
+                    {!isBudin(product.id) && (
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gris font-poppins">Presentación:</span>
+                        <span className="text-md font-medium text-budin">
+                          Focaccia completa
+                        </span>
+                      </div>
+                    )}
+                    
+                    <a 
+                      href={createWholesaleWhatsAppLink(product)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors duration-300 mt-2 font-poppins flex items-center justify-center gap-2"
+                    >
+                      <FaWhatsapp className="text-lg" />
+                      <span>Solicitar Cotización</span>
+                    </a>
                   </div>
                 </div>
               </div>

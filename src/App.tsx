@@ -4,6 +4,9 @@ import { links, iconComponents, type IconName } from './config/links'
 import { theme } from './config/theme'
 import RetailCatalog from './pages/RetailCatalog'
 import WholesaleCatalog from './pages/WholesaleCatalog'
+import Cart from './pages/Cart'
+import { CartProvider } from './context/CartContext'
+import features from './config/features'
 
 interface LinkButtonProps {
   href: string;
@@ -107,13 +110,16 @@ const HomePage = () => {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/catalogo-minorista" element={<RetailCatalog />} />
-        <Route path="/catalogo-mayorista" element={<WholesaleCatalog />} />
-      </Routes>
-    </Router>
+    <CartProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/catalogo-minorista" element={<RetailCatalog />} />
+          <Route path="/catalogo-mayorista" element={<WholesaleCatalog />} />
+          {features.cartEnabled && <Route path="/carrito" element={<Cart />} />}
+        </Routes>
+      </Router>
+    </CartProvider>
   )
 }
 

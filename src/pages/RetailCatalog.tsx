@@ -1,10 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MdArrowBack } from 'react-icons/md';
+import { MdArrowBack, MdShoppingCart, MdAdd, MdRemove } from 'react-icons/md';
+import { FaWhatsapp } from 'react-icons/fa';
 import { getRetailProducts } from '../config/products';
+import { useCart } from '../context/CartContext';
+import features from '../config/features';
 
 const RetailCatalog: React.FC = () => {
   const products = getRetailProducts();
+  const { addToCart, getTotalItems } = useCart();
+  
+  // Estado para manejar las cantidades de cada producto
+  const [quantities, setQuantities] = useState<Record<string, number>>(
+    // Inicializar con 1 para cada producto
+    products.reduce((acc, product) => ({ ...acc, [product.id]: 1 }), {})
+  );
+
+  // Función para incrementar la cantidad
+  const incrementQuantity = (productId: string) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [productId]: (prev[productId] || 1) + 1,
+    }));
+  };
+
+  // Función para decrementar la cantidad
+  const decrementQuantity = (productId: string) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [productId]: Math.max(1, (prev[productId] || 1) - 1),
+    }));
+  };
+
+  // Función para agregar al carrito
+  const handleAddToCart = (productId: string) => {
+    if (!features.cartEnabled) return; // No hacer nada si el carrito está desactivado
+    
+    const product = products.find(p => p.id === productId);
+    if (product) {
+      addToCart(product, quantities[productId] || 1);
+      // Opcional: resetear la cantidad a 1 después de agregar al carrito
+      setQuantities((prev) => ({
+        ...prev,
+        [productId]: 1,
+      }));
+    }
+  };
+
+  // Función para crear enlace de WhatsApp para un producto
+  const createWhatsAppLink = (product: any, quantity: number) => {
+    const message = encodeURIComponent(
+      `Hola! Me interesa comprar ${quantity} unidad(es) de ${product.name}. ¿Podrían informarme sobre disponibilidad y formas de pago? Gracias!`
+    );
+    return `https://wa.me/+5491154793903?text=${message}`;
+  };
+
+  // Función para determinar si el producto es un budín
+  const isBudin = (productId: string) => {
+    return productId.includes('budin');
+  };
 
   return (
     <div 
@@ -19,14 +73,35 @@ const RetailCatalog: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center space-y-6">
-          {/* Botón Volver */}
-          <Link 
-            to="/"
-            className="self-start flex items-center gap-2 text-budin hover:text-romero transition-colors duration-300 mb-4"
-          >
-            <MdArrowBack className="text-xl" />
-            <span className="font-poppins">Volver a los links</span>
-          </Link>
+          {/* Navegación superior */}
+          <div className="w-full flex justify-between items-center mb-4">
+            {/* Botón Volver */}
+            <Link 
+              to="/"
+              className="flex items-center gap-2 text-budin hover:text-romero transition-colors duration-300"
+            >
+              <MdArrowBack className="text-xl" />
+              <span className="font-poppins">Volver a los links</span>
+            </Link>
+            
+            {/* Botón ir al carrito - solo se muestra si el carrito está habilitado */}
+            {features.cartEnabled && (
+              <Link 
+                to="/carrito"
+                className="flex items-center gap-2 bg-romero text-white px-4 py-2 rounded-md hover:bg-budin transition-colors duration-300"
+              >
+                <MdShoppingCart className="text-xl" />
+                <span className="font-poppins">
+                  Ver Carrito
+                  {getTotalItems() > 0 && (
+                    <span className="ml-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-budin rounded-full">
+                      {getTotalItems()}
+                    </span>
+                  )}
+                </span>
+              </Link>
+            )}
+          </div>
 
           {/* Logo */}
           <img 
@@ -69,14 +144,69 @@ const RetailCatalog: React.FC = () => {
                   <p className="text-gris mb-4 font-poppins">
                     {product.description}
                   </p>
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center mb-2">
                     <span className="text-lg font-bold text-budin">
                       ${product.price.toLocaleString('es-AR')}
                     </span>
-                    <button className="bg-romero text-white px-4 py-2 rounded-md hover:bg-budin transition-colors duration-300 font-poppins">
-                      Ver Detalles
-                    </button>
+                    <span className="text-sm text-gris font-poppins">
+                      {product.weight}
+                    </span>
                   </div>
+                  
+                  {/* Etiqueta destacada para la categoría */}
+                  <div className="mb-4">
+                    <span 
+                      className={`inline-block px-2 py-1 text-xs rounded-md ${
+                        isBudin(product.id) 
+                          ? "bg-vainilla text-budin" 
+                          : "bg-romero bg-opacity-20 text-romero"
+                      }`}
+                    >
+                      {isBudin(product.id) ? "Budín" : "Focaccia"}
+                    </span>
+                  </div>
+                  
+                  {/* Control de cantidad y botón Agregar - solo si está habilitado el carrito */}
+                  {features.cartEnabled ? (
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center border border-vainilla rounded-md">
+                        <button 
+                          onClick={() => decrementQuantity(product.id)}
+                          className="px-2 py-1 text-budin hover:text-romero"
+                        >
+                          <MdRemove />
+                        </button>
+                        <span className="px-3 py-1 font-medium">{quantities[product.id] || 1}</span>
+                        <button 
+                          onClick={() => incrementQuantity(product.id)}
+                          className="px-2 py-1 text-budin hover:text-romero"
+                        >
+                          <MdAdd />
+                        </button>
+                      </div>
+                      
+                      <button 
+                        onClick={() => handleAddToCart(product.id)}
+                        className="bg-romero text-white px-3 py-2 rounded-md hover:bg-budin transition-colors duration-300 font-poppins flex items-center gap-1"
+                      >
+                        <MdShoppingCart className="text-lg" />
+                        <span>Agregar</span>
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="mb-3"></div> // Espacio de margen para mantener consistencia visual
+                  )}
+                  
+                  {/* Botón para pedir por WhatsApp - Siempre visible */}
+                  <a 
+                    href={createWhatsAppLink(product, features.cartEnabled ? quantities[product.id] || 1 : 1)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors duration-300 font-poppins flex items-center justify-center gap-2"
+                  >
+                    <FaWhatsapp className="text-lg" />
+                    <span>Pedir por WhatsApp</span>
+                  </a>
                 </div>
               </div>
             ))}
