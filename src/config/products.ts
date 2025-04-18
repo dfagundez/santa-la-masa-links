@@ -74,7 +74,7 @@ export const products: Product[] = [
     name: 'Budín de Banana con Nueces y Chocolate',
     description:
       'Budín artesanal de banana con nueces y chips de chocolate de 400gr',
-    price: 4500,
+    price: 4000,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Banana+Nueces',
     category: 'minorista',
@@ -84,7 +84,7 @@ export const products: Product[] = [
     id: 'budin-zanahoria',
     name: 'Budín de Zanahoria con Nueces y Frosting',
     description: 'Budín artesanal de zanahoria con nueces y frosting de 400gr',
-    price: 4500,
+    price: 4000,
     image: 'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Zanahoria',
     category: 'minorista',
     weight: '400gr',
@@ -144,193 +144,135 @@ export const products: Product[] = [
     id: 'budin-vainilla-mayor',
     name: 'Budín de Vainilla (Mayorista)',
     description:
-      'Budín artesanal de vainilla de 400gr - Pedido mínimo: 3 unidades',
+      'Budín artesanal de vainilla de 400gr - Pedido mínimo: 4 unidades',
     price: 4000,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Vainilla+Mayorista',
     category: 'mayorista',
     weight: '400gr',
     wholesalePrice: {
-      unit: 4000,
-      minQuantity: 3,
+      unit: 2500,
+      minQuantity: 4,
     },
   },
   {
     id: 'budin-marmolado-mayor',
     name: 'Budín Marmolado (Mayorista)',
     description:
-      'Budín artesanal marmolado de 400gr - Pedido mínimo: 3 unidades',
+      'Budín artesanal marmolado de 400gr - Pedido mínimo: 4 unidades',
     price: 4000,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Marmolado+Mayorista',
     category: 'mayorista',
     weight: '400gr',
     wholesalePrice: {
-      unit: 4000,
-      minQuantity: 3,
+      unit: 2500,
+      minQuantity: 4,
     },
   },
   {
     id: 'budin-naranja-mayor',
     name: 'Budín de Naranja con Glaseado (Mayorista)',
     description:
-      'Budín artesanal de naranja con glaseado de 400gr - Pedido mínimo: 3 unidades',
+      'Budín artesanal de naranja con glaseado de 400gr - Pedido mínimo: 4 unidades',
     price: 4000,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Naranja+Mayorista',
     category: 'mayorista',
     weight: '400gr',
     wholesalePrice: {
-      unit: 4000,
-      minQuantity: 3,
+      unit: 2500,
+      minQuantity: 4,
     },
   },
   {
     id: 'budin-limon-mayor',
     name: 'Budín de Limón con Glaseado (Mayorista)',
     description:
-      'Budín artesanal de limón con glaseado de 400gr - Pedido mínimo: 3 unidades',
+      'Budín artesanal de limón con glaseado de 400gr - Pedido mínimo: 4 unidades',
     price: 4000,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Limón+Mayorista',
     category: 'mayorista',
     weight: '400gr',
     wholesalePrice: {
-      unit: 4000,
-      minQuantity: 3,
+      unit: 2500,
+      minQuantity: 4,
     },
   },
   {
     id: 'budin-vainilla-chips-mayor',
     name: 'Budín de Vainilla con Chips (Mayorista)',
     description:
-      'Budín artesanal de vainilla con chips de chocolate de 400gr - Pedido mínimo: 3 unidades',
+      'Budín artesanal de vainilla con chips de chocolate de 400gr - Pedido mínimo: 4 unidades',
     price: 4000,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Vainilla+Chips+Mayorista',
     category: 'mayorista',
     weight: '400gr',
     wholesalePrice: {
-      unit: 4000,
-      minQuantity: 3,
+      unit: 2500,
+      minQuantity: 4,
     },
   },
   {
     id: 'budin-banana-mayor',
     name: 'Budín de Banana (Mayorista)',
     description:
-      'Budín artesanal de banana de 400gr - Pedido mínimo: 3 unidades',
+      'Budín artesanal de banana de 400gr - Pedido mínimo: 4 unidades',
     price: 4000,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Banana+Mayorista',
     category: 'mayorista',
     weight: '400gr',
     wholesalePrice: {
-      unit: 4000,
-      minQuantity: 3,
+      unit: 2500,
+      minQuantity: 4,
     },
   },
   {
     id: 'budin-banana-nueces-mayor',
     name: 'Budín de Banana con Nueces (Mayorista)',
     description:
-      'Budín artesanal de banana con nueces y chips de chocolate de 400gr - Pedido mínimo: 3 unidades',
-    price: 4500,
+      'Budín artesanal de banana con nueces y chips de chocolate de 400gr - Pedido mínimo: 4 unidades',
+    price: 4000,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Banana+Nueces+Mayorista',
     category: 'mayorista',
     weight: '400gr',
     wholesalePrice: {
-      unit: 4500,
-      minQuantity: 3,
+      unit: 2500,
+      minQuantity: 4,
     },
   },
   {
     id: 'budin-zanahoria-mayor',
     name: 'Budín de Zanahoria con Nueces (Mayorista)',
     description:
-      'Budín artesanal de zanahoria con nueces y frosting de 400gr - Pedido mínimo: 3 unidades',
-    price: 4500,
+      'Budín artesanal de zanahoria con nueces y frosting de 400gr - Pedido mínimo: 4 unidades',
+    price: 4000,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Zanahoria+Mayorista',
     category: 'mayorista',
     weight: '400gr',
     wholesalePrice: {
-      unit: 4500,
-      minQuantity: 3,
+      unit: 2500,
+      minQuantity: 4,
     },
   },
   {
     id: 'budin-chocolate-mayor',
     name: 'Budín de Chocolate con Chips (Mayorista)',
     description:
-      'Budín artesanal de chocolate con chips de chocolate de 400gr - Pedido mínimo: 3 unidades',
+      'Budín artesanal de chocolate con chips de chocolate de 400gr - Pedido mínimo: 4 unidades',
     price: 4000,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Chocolate+Mayorista',
     category: 'mayorista',
     weight: '400gr',
     wholesalePrice: {
-      unit: 4000,
-      minQuantity: 3,
-    },
-  },
-
-  // FOCACCIAS MAYORISTAS
-  {
-    id: 'focaccia-clasica-mayor',
-    name: 'Focaccia Clásica (Mayorista)',
-    description:
-      'Focaccia artesanal completa con romero y sal gruesa - Aproximadamente 1kg',
-    price: 6000,
-    image:
-      'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Focaccia+Clásica+Mayorista',
-    category: 'mayorista',
-    weight: '1kg aprox',
-    wholesalePrice: {
-      unit: 6000,
-    },
-  },
-  {
-    id: 'focaccia-olivas-mayor',
-    name: 'Focaccia de Olivas (Mayorista)',
-    description:
-      'Focaccia artesanal completa con olivas, romero, sal y aceitunas verdes - Aproximadamente 1kg',
-    price: 6000,
-    image:
-      'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Focaccia+Olivas+Mayorista',
-    category: 'mayorista',
-    weight: '1kg aprox',
-    wholesalePrice: {
-      unit: 6000,
-    },
-  },
-  {
-    id: 'focaccia-ajo-mayor',
-    name: 'Focaccia de Ajo (Mayorista)',
-    description:
-      'Focaccia artesanal completa con ajo, romero y sal gruesa - Aproximadamente 1kg',
-    price: 6000,
-    image:
-      'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Focaccia+Ajo+Mayorista',
-    category: 'mayorista',
-    weight: '1kg aprox',
-    wholesalePrice: {
-      unit: 6000,
-    },
-  },
-  {
-    id: 'focaccia-cherry-mayor',
-    name: 'Focaccia Cherry (Mayorista)',
-    description:
-      'Focaccia artesanal completa con tomates cherry, ajo y sal - Aproximadamente 1kg',
-    price: 6000,
-    image:
-      'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Focaccia+Cherry+Mayorista',
-    category: 'mayorista',
-    weight: '1kg aprox',
-    wholesalePrice: {
-      unit: 6000,
+      unit: 2500,
+      minQuantity: 4,
     },
   },
 ];
