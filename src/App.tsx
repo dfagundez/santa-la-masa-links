@@ -7,6 +7,7 @@ import WholesaleCatalog from './pages/WholesaleCatalog'
 import Cart from './pages/Cart'
 import { CartProvider } from './context/CartContext'
 import features from './config/features'
+import type { IconType } from 'react-icons'
 
 interface LinkButtonProps {
   href: string;
