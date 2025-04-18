@@ -17,7 +17,8 @@ interface LinkButtonProps {
 
 const LinkButton = ({ href, icon, children }: LinkButtonProps) => {
   // const IconComponent = iconComponents[icon];
-  const IconComponent: IconType = iconComponents[icon];
+  // const IconComponent: IconType = iconComponents[icon];
+  const IconComponent = iconComponents[icon] as React.ComponentType<React.SVGProps<SVGSVGElement>>;
   // Determinar si es una ruta interna o externa
   const isInternalLink = href.startsWith('/');
   
