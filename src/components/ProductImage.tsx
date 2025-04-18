@@ -1,7 +1,8 @@
-import React from 'react';
+// Eliminamos la importación innecesaria de React
+// Ya que JSX.Element se puede usar sin importar React explícitamente en React 17+
 
 interface ProductImageProps {
-  productId: string;
+  productId: string; // Mantenemos este parámetro aunque no lo usemos directamente ahora
   name: string;
   cloudinaryUrl?: string;
   width?: number;
@@ -9,7 +10,8 @@ interface ProductImageProps {
 }
 
 const ProductImage = ({
-  productId,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  productId, // Mantenemos para futura funcionalidad pero lo marcamos como ignorado
   name,
   cloudinaryUrl,
   width = 600,
