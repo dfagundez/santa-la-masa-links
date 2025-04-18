@@ -22,7 +22,7 @@ export const products: Product[] = [
     price: 4000,
     image: 'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Vainilla',
     cloudinaryUrl:
-      'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/santa-la-masa/products/budin-vainilla.jpg',
+      'https://res.cloudinary.com/duuk30hnx/image/upload/v1745012477/budin-vainilla-clasico_wmcf1p.png',
     category: 'minorista',
     weight: '375-450gr',
   },
@@ -50,6 +50,8 @@ export const products: Product[] = [
     description: 'Budín artesanal de limón con glaseado de 375-450gr',
     price: 4000,
     image: 'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Limón',
+    cloudinaryUrl:
+      'https://res.cloudinary.com/duuk30hnx/image/upload/v1745012477/budin-limon-con-glaseado_sdukjk.png',
     category: 'minorista',
     weight: '375-450gr',
   },
@@ -61,6 +63,8 @@ export const products: Product[] = [
     price: 4500,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Vainilla+Chips',
+    cloudinaryUrl:
+      'https://res.cloudinary.com/duuk30hnx/image/upload/v1745012477/budin-vainilla-con-chip_pb1vox.png',
     category: 'minorista',
     weight: '375-450gr',
   },
@@ -82,7 +86,7 @@ export const products: Product[] = [
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Banana+Nueces',
     cloudinaryUrl:
-      'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/santa-la-masa/products/budin-banana-nueces.jpg',
+      'https://res.cloudinary.com/duuk30hnx/image/upload/v1745012476/budin-banana-con-nueces_cwrg1d.png',
     category: 'minorista',
     weight: '375-450gr',
   },
@@ -103,49 +107,11 @@ export const products: Product[] = [
       'Budín artesanal de chocolate con chips de chocolate de 375-450gr',
     price: 4500,
     image: 'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Chocolate',
+    cloudinaryUrl:
+      'https://res.cloudinary.com/duuk30hnx/image/upload/v1745012476/budin-chocolate-con-chips_efnkjv.png',
     category: 'minorista',
     weight: '375-450gr',
   },
-
-  // FOCACCIAS MINORISTAS
-  {
-    id: 'focaccia-clasica',
-    name: 'Focaccia Clásica',
-    description: 'Focaccia artesanal con romero y sal gruesa de 200gr',
-    price: 1500,
-    image: 'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Focaccia+Clásica',
-    category: 'minorista',
-    weight: '200gr',
-  },
-  {
-    id: 'focaccia-olivas',
-    name: 'Focaccia de Olivas',
-    description:
-      'Focaccia artesanal con olivas, romero, sal y aceitunas verdes de 200gr',
-    price: 1500,
-    image: 'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Focaccia+Olivas',
-    category: 'minorista',
-    weight: '200gr',
-  },
-  {
-    id: 'focaccia-ajo',
-    name: 'Focaccia de Ajo',
-    description: 'Focaccia artesanal con ajo, romero y sal gruesa de 200gr',
-    price: 1500,
-    image: 'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Focaccia+Ajo',
-    category: 'minorista',
-    weight: '200gr',
-  },
-  {
-    id: 'focaccia-cherry',
-    name: 'Focaccia Cherry',
-    description: 'Focaccia artesanal con tomates cherry, ajo y sal de 200gr',
-    price: 1500,
-    image: 'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Focaccia+Cherry',
-    category: 'minorista',
-    weight: '200gr',
-  },
-
   // PRODUCTOS MAYORISTAS
   // BUDINES MAYORISTAS
   {
@@ -156,6 +122,8 @@ export const products: Product[] = [
     price: 4000,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Vainilla+Mayorista',
+    cloudinaryUrl:
+      'https://res.cloudinary.com/duuk30hnx/image/upload/v1745012477/budin-vainilla-clasico_wmcf1p.png',
     category: 'mayorista',
     weight: '375-450gr',
     wholesalePrice: {
@@ -201,6 +169,8 @@ export const products: Product[] = [
     price: 4000,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Limón+Mayorista',
+    cloudinaryUrl:
+      'https://res.cloudinary.com/duuk30hnx/image/upload/v1745012477/budin-limon-con-glaseado_sdukjk.png',
     category: 'mayorista',
     weight: '375-450gr',
     wholesalePrice: {
@@ -216,6 +186,8 @@ export const products: Product[] = [
     price: 4500,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Vainilla+Chips+Mayorista',
+    cloudinaryUrl:
+      'https://res.cloudinary.com/duuk30hnx/image/upload/v1745012477/budin-vainilla-con-chip_pb1vox.png',
     category: 'mayorista',
     weight: '375-450gr',
     wholesalePrice: {
@@ -246,6 +218,8 @@ export const products: Product[] = [
     price: 4500,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Banana+Nueces+Mayorista',
+    cloudinaryUrl:
+      'https://res.cloudinary.com/duuk30hnx/image/upload/v1745012476/budin-banana-con-nueces_cwrg1d.png',
     category: 'mayorista',
     weight: '375-450gr',
     wholesalePrice: {
@@ -276,6 +250,8 @@ export const products: Product[] = [
     price: 4500,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Chocolate+Mayorista',
+    cloudinaryUrl:
+      'https://res.cloudinary.com/duuk30hnx/image/upload/v1745012476/budin-chocolate-con-chips_efnkjv.png',
     category: 'mayorista',
     weight: '375-450gr',
     wholesalePrice: {

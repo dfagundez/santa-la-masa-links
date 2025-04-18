@@ -1,5 +1,14 @@
-// Reemplaza esto con tu cloud name de Cloudinary
-const CLOUD_NAME = 'tu-cloud-name';
+import { Product } from '../config/products';
+
+// Usar variables de entorno en lugar de valores hardcodeados
+const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+const BASE_URL = import.meta.env.VITE_CLOUDINARY_BASE_URL;
+
+if (!CLOUD_NAME || !BASE_URL) {
+  throw new Error(
+    'Cloudinary configuration is missing. Please check your .env file.'
+  );
+}
 
 /**
  * Genera una URL optimizada de Cloudinary
@@ -24,7 +33,7 @@ export function getCloudinaryUrl(
   if (height) transformations += `,h_${height}`;
   if (crop) transformations += `,c_${crop}`;
 
-  return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${transformations}/santa-la-masa/${publicId}`;
+  return `${BASE_URL}/${transformations}/santa-la-masa/${publicId}`;
 }
 
 /**
@@ -67,3 +76,24 @@ export async function checkProductImageExists(
     return undefined;
   }
 }
+
+// Helper function to get the optimized image URL
+export const getOptimizedImageUrl = (product: Product): string => {
+  // If the product already has a cloudinaryUrl, use it
+  if (product.cloudinaryUrl) {
+    return product.cloudinaryUrl;
+  }
+
+  // Otherwise, use the placeholder image
+  return product.image;
+};
+
+// Function to get the Cloudinary URL for a product
+export const getCloudinaryUrlForProduct = (productId: string): string => {
+  return `${BASE_URL}/v1745012477/${productId}.png`;
+};
+
+// Function to check if a product has a Cloudinary image
+export const hasCloudinaryImage = (product: Product): boolean => {
+  return !!product.cloudinaryUrl;
+};
