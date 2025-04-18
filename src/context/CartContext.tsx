@@ -57,7 +57,7 @@ export const CartProvider = ({ children }: { children: any }) => {
     // @ts-ignore - ignorar errores de tipos en las funciones callback
     setCartItems(prevItems => {
       // Verificar si el producto ya está en el carrito
-      const existingItemIndex = prevItems.findIndex(item => item.product.id === product.id);
+      const existingItemIndex = prevItems.findIndex((item: CartItem) => item.product.id === product.id);
       
       if (existingItemIndex >= 0) {
         // Si el producto ya está en el carrito, actualizar la cantidad
@@ -89,7 +89,7 @@ export const CartProvider = ({ children }: { children: any }) => {
 
     // @ts-ignore - ignorar errores de tipos
     setCartItems(prevItems => 
-      prevItems.map(item => 
+      prevItems.map((item: CartItem) => 
         item.product.id === productId ? { ...item, quantity } : item
       )
     );
@@ -104,7 +104,7 @@ export const CartProvider = ({ children }: { children: any }) => {
   const getTotal = (): number => {
     // @ts-ignore - ignorar errores de tipos
     return cartItems.reduce(
-      (total, item) => total + (item.product.price * item.quantity), 
+      (total: number, item: CartItem) => total + (item.product.price * item.quantity), 
       0
     );
   };
@@ -113,7 +113,7 @@ export const CartProvider = ({ children }: { children: any }) => {
   const getTotalItems = (): number => {
     // @ts-ignore - ignorar errores de tipos
     return cartItems.reduce(
-      (total, item) => total + item.quantity, 
+      (total: number, item: CartItem) => total + item.quantity, 
       0
     );
   };
