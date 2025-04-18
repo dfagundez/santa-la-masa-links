@@ -4,6 +4,7 @@ export interface Product {
   description: string;
   price: number;
   image: string;
+  cloudinaryUrl?: string;
   category: 'minorista' | 'mayorista';
   weight?: string;
   wholesalePrice?: {
@@ -20,6 +21,8 @@ export const products: Product[] = [
     description: 'Budín artesanal de vainilla de 375-450gr',
     price: 4000,
     image: 'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Vainilla',
+    cloudinaryUrl:
+      'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/santa-la-masa/products/budin-vainilla.jpg',
     category: 'minorista',
     weight: '375-450gr',
   },
@@ -78,6 +81,8 @@ export const products: Product[] = [
     price: 4500,
     image:
       'https://placehold.co/600x400/F3D8A5/8B5E3C?text=Budín+Banana+Nueces',
+    cloudinaryUrl:
+      'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/santa-la-masa/products/budin-banana-nueces.jpg',
     category: 'minorista',
     weight: '375-450gr',
   },

@@ -5,6 +5,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { getRetailProducts } from '../config/products';
 import { useCart } from '../context/CartContext';
 import features from '../config/features';
+import ProductImage from '../components/ProductImage';
 
 // Eliminar el tipo FC y usar un tipo explícito para definir cantidades
 type QuantityRecord = Record<string, number>;
@@ -137,11 +138,10 @@ const RetailCatalog = () => {
               >
                 <div className="aspect-w-16 aspect-h-9">
                   <div className="w-full h-48 bg-vainilla flex items-center justify-center">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
+                    <ProductImage
+                      productId={product.id}
+                      name={product.name}
+                      cloudinaryUrl={product.cloudinaryUrl}
                     />
                   </div>
                 </div>
