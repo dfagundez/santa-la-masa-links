@@ -29,7 +29,7 @@ const defaultContext: CartContextType = {
   updateQuantity: () => undefined,
   clearCart: () => undefined,
   getTotal: () => 0,
-  getTotalItems: () => 0
+  getTotalItems: () => 0,
 };
 
 const CartContext = React.createContext(defaultContext);
@@ -55,16 +55,18 @@ export const CartProvider = ({ children }: { children: any }) => {
   // Agregar un producto al carrito
   const addToCart = (product: Product, quantity: number): void => {
     // @ts-ignore - ignorar errores de tipos en las funciones callback
-    setCartItems(prevItems => {
+    setCartItems((prevItems) => {
       // Verificar si el producto ya está en el carrito
-      const existingItemIndex = prevItems.findIndex((item: CartItem) => item.product.id === product.id);
-      
+      const existingItemIndex = prevItems.findIndex(
+        (item: CartItem) => item.product.id === product.id
+      );
+
       if (existingItemIndex >= 0) {
         // Si el producto ya está en el carrito, actualizar la cantidad
         const updatedItems = [...prevItems];
         updatedItems[existingItemIndex] = {
           ...updatedItems[existingItemIndex],
-          quantity: updatedItems[existingItemIndex].quantity + quantity
+          quantity: updatedItems[existingItemIndex].quantity + quantity,
         };
         return updatedItems;
       } else {
@@ -77,7 +79,9 @@ export const CartProvider = ({ children }: { children: any }) => {
   // Eliminar un producto del carrito
   const removeFromCart = (productId: string): void => {
     // @ts-ignore - ignorar errores de tipos
-    setCartItems(prevItems => prevItems.filter(item => item.product.id !== productId));
+    setCartItems((prevItems) =>
+      prevItems.filter((item: CartItem) => item.product.id !== productId)
+    );
   };
 
   // Actualizar la cantidad de un producto en el carrito
@@ -88,8 +92,8 @@ export const CartProvider = ({ children }: { children: any }) => {
     }
 
     // @ts-ignore - ignorar errores de tipos
-    setCartItems(prevItems => 
-      prevItems.map((item: CartItem) => 
+    setCartItems((prevItems) =>
+      prevItems.map((item: CartItem) =>
         item.product.id === productId ? { ...item, quantity } : item
       )
     );
@@ -104,7 +108,8 @@ export const CartProvider = ({ children }: { children: any }) => {
   const getTotal = (): number => {
     // @ts-ignore - ignorar errores de tipos
     return cartItems.reduce(
-      (total: number, item: CartItem) => total + (item.product.price * item.quantity), 
+      (total: number, item: CartItem) =>
+        total + item.product.price * item.quantity,
       0
     );
   };
@@ -113,7 +118,7 @@ export const CartProvider = ({ children }: { children: any }) => {
   const getTotalItems = (): number => {
     // @ts-ignore - ignorar errores de tipos
     return cartItems.reduce(
-      (total: number, item: CartItem) => total + item.quantity, 
+      (total: number, item: CartItem) => total + item.quantity,
       0
     );
   };
@@ -125,17 +130,15 @@ export const CartProvider = ({ children }: { children: any }) => {
     updateQuantity,
     clearCart,
     getTotal,
-    getTotalItems
+    getTotalItems,
   };
 
   return (
-    <CartContext.Provider value={contextValue}>
-      {children}
-    </CartContext.Provider>
+    <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
   );
 };
 
 // Hook personalizado para usar el contexto
 export const useCart = (): CartContextType => {
   return React.useContext(CartContext);
-}; 
+};
