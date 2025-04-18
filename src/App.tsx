@@ -7,6 +7,7 @@ import WholesaleCatalog from './pages/WholesaleCatalog';
 import Cart from './pages/Cart';
 import { CartProvider } from './context/CartContext';
 import features from './config/features';
+import { IconBaseProps } from 'react-icons';
 
 interface LinkButtonProps {
   href: string;
@@ -15,10 +16,13 @@ interface LinkButtonProps {
 }
 
 const LinkButton = ({ href, icon, children }: LinkButtonProps) => {
-  // Convertir el componente de icono al tipo adecuado
-  const IconComponent = iconComponents[icon] as React.ComponentType<
-    React.SVGProps<SVGSVGElement>
-  >;
+  // Utilizar el tipo correcto para componentes de react-icons
+  const IconComponent = iconComponents[icon];
+
+  // Crear propiedades de icono con tipado seguro
+  const iconProps: IconBaseProps & { className?: string } = {
+    className: 'text-xl',
+  };
 
   // Determinar si es una ruta interna o externa
   const isInternalLink = href.startsWith('/');
@@ -29,7 +33,7 @@ const LinkButton = ({ href, icon, children }: LinkButtonProps) => {
         to={href}
         className="btn-primary w-full text-center block flex items-center justify-center gap-2"
       >
-        <IconComponent className="text-xl" />
+        <IconComponent {...iconProps} />
         <span>{children}</span>
       </Link>
     );
@@ -42,7 +46,7 @@ const LinkButton = ({ href, icon, children }: LinkButtonProps) => {
       rel="noopener noreferrer"
       className="btn-primary w-full text-center block flex items-center justify-center gap-2"
     >
-      <IconComponent className="text-xl" />
+      <IconComponent {...iconProps} />
       <span>{children}</span>
     </a>
   );
