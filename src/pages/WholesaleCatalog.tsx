@@ -1,10 +1,9 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdArrowBack } from 'react-icons/md';
 import { FaWhatsapp } from 'react-icons/fa';
 import { getWholesaleProducts } from '../config/products';
 
-const WholesaleCatalog: React.FC = () => {
+const WholesaleCatalog = () => {
   const products = getWholesaleProducts();
 
   // Función para crear enlace de WhatsApp para solicitar cotización mayorista
@@ -21,20 +20,21 @@ const WholesaleCatalog: React.FC = () => {
   };
 
   return (
-    <div 
+    <div
       className="min-h-screen py-8 px-4 sm:px-6 lg:px-8"
       style={{
-        backgroundImage: 'linear-gradient(rgba(246, 240, 231, 0.9), rgba(246, 240, 231, 0.9)), url("/texture-bg.jpg")',
+        backgroundImage:
+          'linear-gradient(rgba(246, 240, 231, 0.9), rgba(246, 240, 231, 0.9)), url("/texture-bg.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed'
+        backgroundAttachment: 'fixed',
       }}
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center space-y-6">
           {/* Botón Volver */}
-          <Link 
+          <Link
             to="/"
             className="self-start flex items-center gap-2 text-budin hover:text-romero transition-colors duration-300 mb-4"
           >
@@ -43,17 +43,17 @@ const WholesaleCatalog: React.FC = () => {
           </Link>
 
           {/* Logo */}
-          <img 
-            src="/isologo.png" 
-            alt="Santa La Masa logo" 
+          <img
+            src="/isologo.png"
+            alt="Santa La Masa logo"
             className="w-24 h-24 object-contain"
           />
-          
+
           {/* Título */}
           <h1 className="text-4xl text-budin font-cormorant font-medium tracking-wide">
             Catálogo Mayorista
           </h1>
-          
+
           {/* Subtítulo */}
           <p className="text-center text-gris">
             Productos artesanales para tu negocio
@@ -62,14 +62,14 @@ const WholesaleCatalog: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
             {/* Product Cards */}
             {products.map((product) => (
-              <div 
-                key={product.id} 
+              <div
+                key={product.id}
                 className="bg-masa-clara rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-vainilla"
               >
                 <div className="aspect-w-16 aspect-h-9">
                   <div className="w-full h-48 bg-vainilla flex items-center justify-center">
-                    <img 
-                      src={product.image} 
+                    <img
+                      src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover"
                       loading="lazy"
@@ -85,41 +85,49 @@ const WholesaleCatalog: React.FC = () => {
                   </p>
                   <div className="flex flex-col space-y-2">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gris font-poppins">Precio:</span>
+                      <span className="text-sm text-gris font-poppins">
+                        Precio:
+                      </span>
                       <span className="text-lg font-bold text-budin">
                         ${product.wholesalePrice?.unit.toLocaleString('es-AR')}
                       </span>
                     </div>
-                    
+
                     {/* Información de peso */}
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gris font-poppins">Peso:</span>
+                      <span className="text-sm text-gris font-poppins">
+                        Peso:
+                      </span>
                       <span className="text-md font-medium text-budin">
                         {product.weight}
                       </span>
                     </div>
-                    
+
                     {/* Para budines, mostrar el pedido mínimo */}
                     {isBudin(product.id) && (
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-gris font-poppins">Pedido mínimo:</span>
+                        <span className="text-sm text-gris font-poppins">
+                          Pedido mínimo:
+                        </span>
                         <span className="text-md font-medium text-budin">
                           {product.wholesalePrice?.minQuantity} unidades
                         </span>
                       </div>
                     )}
-                    
+
                     {/* Para focaccias, mostrar que se vende por unidad entera */}
                     {!isBudin(product.id) && (
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-gris font-poppins">Presentación:</span>
+                        <span className="text-sm text-gris font-poppins">
+                          Presentación:
+                        </span>
                         <span className="text-md font-medium text-budin">
                           Focaccia completa
                         </span>
                       </div>
                     )}
-                    
-                    <a 
+
+                    <a
                       href={createWholesaleWhatsAppLink(product)}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -144,4 +152,4 @@ const WholesaleCatalog: React.FC = () => {
   );
 };
 
-export default WholesaleCatalog; 
+export default WholesaleCatalog;

@@ -1,13 +1,13 @@
-import './App.css'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import { links, iconComponents, type IconName } from './config/links'
-import { theme } from './config/theme'
-import RetailCatalog from './pages/RetailCatalog'
-import WholesaleCatalog from './pages/WholesaleCatalog'
-import Cart from './pages/Cart'
-import { CartProvider } from './context/CartContext'
-import features from './config/features'
-import type { IconType } from 'react-icons'
+import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { links, iconComponents, type IconName } from './config/links';
+import { theme } from './config/theme';
+import RetailCatalog from './pages/RetailCatalog';
+import WholesaleCatalog from './pages/WholesaleCatalog';
+import Cart from './pages/Cart';
+import { CartProvider } from './context/CartContext';
+import features from './config/features';
+import type { IconType } from 'react-icons';
 
 interface LinkButtonProps {
   href: string;
@@ -16,15 +16,17 @@ interface LinkButtonProps {
 }
 
 const LinkButton = ({ href, icon, children }: LinkButtonProps) => {
-  // const IconComponent = iconComponents[icon];
-  // const IconComponent: IconType = iconComponents[icon];
-  const IconComponent = iconComponents[icon] as React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  // Convertir el componente de icono al tipo adecuado
+  const IconComponent = iconComponents[icon] as React.ComponentType<
+    React.SVGProps<SVGSVGElement>
+  >;
+
   // Determinar si es una ruta interna o externa
   const isInternalLink = href.startsWith('/');
-  
+
   if (isInternalLink) {
     return (
-      <Link 
+      <Link
         to={href}
         className="btn-primary w-full text-center block flex items-center justify-center gap-2"
       >
@@ -33,9 +35,9 @@ const LinkButton = ({ href, icon, children }: LinkButtonProps) => {
       </Link>
     );
   }
-  
+
   return (
-    <a 
+    <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
@@ -45,34 +47,34 @@ const LinkButton = ({ href, icon, children }: LinkButtonProps) => {
       <span>{children}</span>
     </a>
   );
-}
+};
 
 const HomePage = () => {
   return (
-    <div 
+    <div
       className="min-h-screen py-8 px-4"
       style={{
         backgroundImage: `${theme.background.overlay}, ${theme.background.texture}`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed'
+        backgroundAttachment: 'fixed',
       }}
     >
       <div className="container-custom">
         <div className="flex flex-col items-center space-y-6">
           {/* Logo */}
-          <img 
-            src="/isologo.png" 
-            alt="Santa La Masa logo" 
+          <img
+            src="/isologo.png"
+            alt="Santa La Masa logo"
             className="w-24 h-24 object-contain"
           />
-          
+
           {/* Título */}
           <h1 className="text-4xl text-budin font-cormorant font-medium tracking-wide">
             Santa La Masa
           </h1>
-          
+
           {/* Subtítulo */}
           <p className="text-center text-gris">
             Budines y focaccias artesanales hechos con amor
@@ -107,8 +109,8 @@ const HomePage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 function App() {
   return (
@@ -122,7 +124,7 @@ function App() {
         </Routes>
       </Router>
     </CartProvider>
-  )
+  );
 }
 
-export default App
+export default App;
