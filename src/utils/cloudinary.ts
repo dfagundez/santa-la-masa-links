@@ -22,16 +22,19 @@ export function getCloudinaryUrl(
     width?: number;
     height?: number;
     crop?: 'fill' | 'crop' | 'scale' | 'fit';
-    quality?: number;
+    quality?: number | 'auto';
   } = {}
 ): string {
-  const { width, height, crop = 'fill', quality = 'auto' } = options;
+  // Destructuramos solo lo que usamos
+  const { width, height, crop = 'fill' } = options;
 
-  let transformations = 'f_auto,q_auto';
+  let transformations = 'f_auto,q_auto'; // Calidad auto por defecto
 
   if (width) transformations += `,w_${width}`;
   if (height) transformations += `,h_${height}`;
   if (crop) transformations += `,c_${crop}`;
+  // La calidad podría usarse así en el futuro si lo necesitas:
+  // if (options.quality && options.quality !== 'auto') transformations += `,q_${options.quality}`;
 
   return `${BASE_URL}/${transformations}/santa-la-masa/${publicId}`;
 }
