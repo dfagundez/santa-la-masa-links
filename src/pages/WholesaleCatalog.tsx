@@ -105,14 +105,27 @@ const WholesaleCatalog = () => {
 
                     {/* Para budines, mostrar el pedido mínimo */}
                     {isBudin(product.id) && (
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gris font-poppins">
-                          Pedido mínimo:
-                        </span>
-                        <span className="text-md font-medium text-budin">
-                          {product.wholesalePrice?.minQuantity} unidades
-                        </span>
-                      </div>
+                      <>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm text-gris font-poppins">
+                            Pedido mínimo por sabor:
+                          </span>
+                          <span className="text-md font-medium text-budin">
+                            4 unidades
+                          </span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm text-gris font-poppins">
+                            Pedido mínimo total:
+                          </span>
+                          <span className="text-md font-medium text-budin">
+                            12 unidades
+                          </span>
+                        </div>
+                        <p className="text-xs text-gris italic mt-1">
+                          *Máximo 3 sabores diferentes por pedido de 12 unidades
+                        </p>
+                      </>
                     )}
 
                     {/* Para focaccias, mostrar que se vende por unidad entera */}
