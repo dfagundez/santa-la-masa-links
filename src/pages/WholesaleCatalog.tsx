@@ -56,9 +56,14 @@ const WholesaleCatalog = () => {
           </h1>
 
           {/* Subtítulo */}
-          <p className="text-center text-gris">
-            Productos artesanales para tu negocio
-          </p>
+          <div className="text-center text-gris space-y-2 max-w-2xl mx-auto">
+            <p className="text-base">
+              Productos artesanales para tu cafetería, comercio o emprendimiento
+            </p>
+            <p className="text-base">
+              En este catálogo vas a encontrar los sabores disponibles con precios actualizados y el botón para directamente pedirlo por WhatsApp.
+            </p>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
             {/* Product Cards */}
