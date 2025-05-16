@@ -12,7 +12,7 @@ const WholesaleCatalog = () => {
     const message = encodeURIComponent(
       `Hola! Soy un cliente mayorista y me interesa recibir una cotización para ${product.name}. ¿Podrías darme más información sobre precios y disponibilidad? Gracias!`
     );
-    return `https://wa.me/+5491154793903?text=${message}`;
+    return `https://wa.me/+5491127785821?text=${message}`;
   };
 
   // Función para determinar si el producto es un budín (requiere mínimo)

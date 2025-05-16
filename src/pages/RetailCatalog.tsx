@@ -60,7 +60,7 @@ const RetailCatalog = () => {
     const message = encodeURIComponent(
       `Hola! Me interesa comprar ${quantity} unidad(es) de ${product.name}. ¿Podrían informarme sobre disponibilidad y formas de pago? Gracias!`
     );
-    return `https://wa.me/+5491154793903?text=${message}`;
+    return `https://wa.me/+5491127785821?text=${message}`;
   };
 
   // Función para determinar si el producto es un budín

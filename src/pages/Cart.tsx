@@ -48,9 +48,8 @@ const Cart = () => {
     const encodedMessage = encodeURIComponent(message);
 
     // Abrir WhatsApp con el mensaje predefinido
-    // Reemplazar NUMERO_DE_TELEFONO con el número real de WhatsApp
     window.open(
-      `https://wa.me/+5491154793903?text=${encodedMessage}`,
+      `https://wa.me/+5491127785821?text=${encodedMessage}`,
       '_blank'
     );
   };
